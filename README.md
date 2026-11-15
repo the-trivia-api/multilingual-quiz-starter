@@ -2,7 +2,7 @@
 
 A game show style quiz built with Next.js and [The Trivia API](https://the-trivia-api.com). Players search for a topic in their own language, pick one and answer ten multiple choice questions in that language. The whole app, from the buttons to the questions, works in the nine languages the API supports: English, Spanish, Dutch, Hindi, Turkish, French, German, Russian and Portuguese.
 
-**[Try the live demo](https://DEMO_URL_PLACEHOLDER)**
+**[Try the live demo](https://multilingual-quiz-starter.vercel.app)**
 
 The [multilingual quiz tutorial](https://the-trivia-api.com/docs/tutorials/multilingual-quiz) walks through how it works.
 
