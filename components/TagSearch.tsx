@@ -82,8 +82,7 @@ function TagCard({ tag }: { tag: Tag }) {
     </>
   );
 
-  // The count is for multiple choice questions in any language, so a tag with
-  // a count above 0 can still come back short. A count of 0 never works.
+  // A tag with a few questions gives a short round, but a count of 0 never works.
   if (tag.count === 0) {
     return (
       <div className="tag tag--disabled" aria-disabled="true">

@@ -57,7 +57,7 @@ GET /v2/questions?limit=10&types=text_choice&tags=place:france&language=fr
 
 English is the default, so `language` is only sent for the other eight. The answers are shuffled on the server, and [`components/Quiz.tsx`](components/Quiz.tsx) runs the game: one question at a time, a streak counter, confetti for right answers and a results screen. "Play again" asks the server for a new set on the same tag.
 
-A tag's count covers every language, so a tag can have fewer translated questions than its count. If fewer than ten come back, the round is just shorter. If the API fails, the player sees a message in their language with a button to try again.
+A tag with fewer than ten questions gives a shorter round rather than an error. If the API fails, the player sees a message in their language with a button to try again.
 
 ### Styling
 
