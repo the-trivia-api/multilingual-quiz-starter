@@ -7,12 +7,12 @@ const API_URL = "https://the-trivia-api.com/v2";
 
 export const QUIZ_LENGTH = 10;
 
-type LocalisedText = Partial<Record<string, string>>;
+type LocalisedText = Record<Language, string>;
 
 type RegistryTag = {
   slug: string;
-  label?: LocalisedText;
-  description?: LocalisedText;
+  label: LocalisedText;
+  description: LocalisedText;
   count: number;
 };
 
@@ -36,7 +36,7 @@ export class TriviaApiError extends Error {
 /**
  * Every tag with its label and description in one language. We load this at
  * runtime because tags are added and their counts change: never copy it into
- * your code. A tag without text in the language comes back in English.
+ * your code. Every tag has text in every language we support.
  */
 export const fetchTags = async (language: Language): Promise<Tag[]> => {
   const response = await fetch(`${API_URL}/tag-registry?${new URLSearchParams({ language })}`, {
@@ -50,8 +50,8 @@ export const fetchTags = async (language: Language): Promise<Tag[]> => {
   return tags
     .map((tag) => ({
       slug: tag.slug,
-      label: tag.label?.[language] ?? tag.label?.en ?? tag.slug,
-      description: tag.description?.[language] ?? tag.description?.en ?? "",
+      label: tag.label[language],
+      description: tag.description[language],
       count: tag.count,
     }))
     .sort((a, b) => b.count - a.count);
